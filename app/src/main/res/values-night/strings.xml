@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="name">Name</string>
+    <string name="_8_30_pm">8 : 30 PM</string>
+    <string name="cancel_reminder">Cancel reminder</string>
+    <string name="set_sound">Set sound</string>
+    <string name="select_time">select time</string>
+    <string name="enter_task">Enter Task</string>
+    <string name="enter_assignment">Enter Assignment</string>
+    <string name="your_details">Your Details</string>
+    <string name="task">Task</string>
+    <string name="priority">Priority</string>
+    <string name="save">Save</string>
+    <string name="details">Details</string>
+    <string name="time_table">Time Table</string>
+    <string name="assignments">Assignments</string>
+</resources>
