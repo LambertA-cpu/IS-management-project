@@ -57,18 +57,23 @@ class SigninActivity : AppCompatActivity() {
         //conditions when different errors occur
         if (stName.isEmpty()){
             StudentName.error = " Please enter your Name"
+        return
         }
         if (stEmail.isEmpty()){
             StudentEmail.error = " Please enter Email Address"
+            return
         }
         if (stPhone.isEmpty()){
             StudentPhone.error = " Please enter Your Phone Number"
+            return
         }
         if (stPassword.isEmpty()){
             StudentPass.error = " Please enter Password!"
+            return
         }
-        if (stPassword2==stPassword){
+        if (stPassword2!=stPassword){
             StudentPass.error = " Passwords do not Match! "
+            return
         }
 
         val stId = dbref.push().key!!
@@ -78,11 +83,12 @@ class SigninActivity : AppCompatActivity() {
         dbref.child(stId).setValue(Students)
             .addOnCompleteListener{
                 Toast.makeText(this,"Data has been stored successfully!", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, LoginActivity::class.java)
+                startActivity(intent)
             }.addOnFailureListener { err ->
                 Toast.makeText(this, "Error${err.message}", Toast.LENGTH_LONG).show()
             }
-        val intent = Intent(this, LoginActivity::class.java)
-        startActivity(intent)
+
 
     }
 

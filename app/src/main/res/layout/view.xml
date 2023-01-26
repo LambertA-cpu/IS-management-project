@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="3dp"
-        android:backgroundTint="@color/black"
+        android:backgroundTint="@color/white"
         app:cardCornerRadius="10dp">
         <LinearLayout
             android:id="@+id/mylayout"
@@ -23,7 +23,7 @@
                 android:text="your task will go here"
                 android:textStyle="bold"
                 android:textSize="24sp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="sans-serif"/>
             <TextView
                 android:id="@+id/priority"
@@ -32,7 +32,7 @@
                 android:text="Priority - High"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="sans-serif"/>
             <TextView
                 android:id="@+id/details"
@@ -41,7 +41,7 @@
                 android:text="Details"
                 android:textSize="15sp"
                 android:layout_marginTop="5dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:fontFamily="sans-serif"/>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

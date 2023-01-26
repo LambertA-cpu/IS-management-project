@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
         if (stPassword.isEmpty()){
             StudentPass.error = " Please enter Password!"
         }
-        auth.createUserWithEmailAndPassword(stEmail,stPassword)
+        auth.signInWithEmailAndPassword(stEmail,stPassword)
             .addOnCompleteListener(this){ task ->
                 if (task.isSuccessful){
                     //Move to main activity
@@ -74,5 +74,6 @@ class LoginActivity : AppCompatActivity() {
                 Toast.makeText(baseContext,"Authentication failed!${it.localizedMessage}",Toast.LENGTH_SHORT)
                     .show()
             }
+
     }
 }

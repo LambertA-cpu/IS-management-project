@@ -5,12 +5,12 @@ import android.app.*
 import android.content.Context
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import com.example.studentappproject.databinding.ActivityCreateCardBinding
-import com.google.android.gms.tasks.Tasks
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_create_card.*
@@ -18,6 +18,7 @@ import java.util.*
 
 class CreateCard : AppCompatActivity() {
     private lateinit var binding: ActivityCreateCardBinding
+    private lateinit var auth: FirebaseAuth
     private lateinit var database: DatabaseReference
     @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +28,14 @@ class CreateCard : AppCompatActivity() {
             binding = ActivityCreateCardBinding.inflate(layoutInflater)
             setContentView(binding.root)
 
+        auth = FirebaseAuth.getInstance()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             createNotificationChannel()
         }
         binding.saveButton.setOnClickListener { scheduleNotification() }
         //FIREBASE DB CONNECTION...
-        database = FirebaseDatabase.getInstance().getReference("Student").child("StudentId").child("Tasks")
+        val uid = auth.uid
+        database = FirebaseDatabase.getInstance().getReference("Students").child(uid!!).child("Tasks")
         //database = Firebase.database.reference
         save_button.setOnClickListener {
             if (save_button.text.toString().trim { it <= ' ' }.isNotEmpty()
@@ -57,7 +60,7 @@ class CreateCard : AppCompatActivity() {
                     }.addOnFailureListener { err ->
                         Toast.makeText(this, "Error${err.message}", Toast.LENGTH_LONG).show()
                     }
-
+                scheduleNotification()
             }
 
             val intent = Intent(this, MainActivity::class.java)
